@@ -28,7 +28,7 @@ public class UsuarioController {
             Usuario novoUsuario = switch (tipo) {
                 case ADMINISTRADOR -> new Administrador(nome, telefoneAjustado);
                 case ALUNO -> new Aluno(nome, telefoneAjustado);
-                case PROFESSOR -> new Professor(nome, telefoneAjustado);
+                case PROFESSOR -> new Professor(nome, telefone);
                 default -> throw new IllegalArgumentException("Tipo de usuário inválido: " + tipo);
             };
             usuarioDAO.cadastrarUsuario(novoUsuario);

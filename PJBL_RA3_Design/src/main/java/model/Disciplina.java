@@ -1,14 +1,17 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Disciplina {
-    @Id@GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_DISCIPLINA")
     private int idDisciplina;
+    @Column(name = "NOME_DISCIPLINA")
     private String nomeDisciplina;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "CARGA_HORARIA")
     private CargaHoraria cargaHoraria;
 
     //construtor vazio exigido
