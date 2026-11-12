@@ -13,11 +13,15 @@ public abstract class Usuario {
     @Column(length = 15)
     private String telefone;
 
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "ID_ENDERECO", nullable = false)
+    private Endereco endereco;
+
     //construtor vazio exigido
     protected Usuario(){};
 
     //construtor padrão
-    public Usuario(String nome, String telefone){
+    public Usuario(String nome, String telefone, Endereco endereco){
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("Nome obrigatório");
         }
@@ -29,6 +33,7 @@ public abstract class Usuario {
 
         this.nome = nome;
         this.telefone = telefone;
+        this.endereco = endereco;
     }
 
     //Getters e Setters
@@ -40,4 +45,7 @@ public abstract class Usuario {
 
     public String getTelefone() {return telefone;}
     public void setTelefone(String telefone) {this.telefone = telefone;}
+
+    public Endereco getEndereco() {return endereco;}
+    public void setEndereco(Endereco endereco) {this.endereco = endereco;}
 }

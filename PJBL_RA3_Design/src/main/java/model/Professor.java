@@ -10,7 +10,7 @@ public class Professor  extends Usuario {
     protected Professor(){};
 
     //construtor padrão
-    public Professor(String nome, String telefone) {
-        super(nome, telefone);
+    public Professor(String nome, String telefone, Endereco endereco) {
+        super(nome, telefone, endereco);
     }
 }

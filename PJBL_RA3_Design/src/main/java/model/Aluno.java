@@ -11,7 +11,7 @@ public class Aluno extends Usuario {
     protected Aluno(){};
 
     //construtor padrão
-    public Aluno (String nome, String telefone){
-        super(nome, telefone);
+    public Aluno (String nome, String telefone, Endereco endereco){
+        super(nome, telefone, endereco);
     }
 }

@@ -2,6 +2,7 @@ package DAO;
 
 import config.EMF;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import model.Disciplina;
 import model.Usuario;
 
@@ -57,10 +58,8 @@ public class DisciplinaDAO {
                             .getResultList();
             return resultado;
 
-        } catch(Exception e){
-            e.printStackTrace();
-            System.out.println("Erro ao buscar disciplina");
-            return new ArrayList<>();
+        } catch(NoResultException e) {
+            return null;
 
         } finally {
             if (em != null && em.isOpen()) {

@@ -11,7 +11,7 @@ public class Administrador extends Usuario {
     protected Administrador(){};
 
     //construtor padrão
-    public Administrador(String nome, String telefone){
-        super(nome, telefone);
+    public Administrador(String nome, String telefone, Endereco endereco){
+        super(nome, telefone, endereco);
     }
 }

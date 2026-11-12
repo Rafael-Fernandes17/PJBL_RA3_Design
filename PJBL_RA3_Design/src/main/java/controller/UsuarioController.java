@@ -1,4 +1,5 @@
 package controller;
+import DAO.EnderecoDAO;
 import DAO.UsuarioDAO;
 import model.*;
 
@@ -11,7 +12,18 @@ public class UsuarioController {
         this.usuarioDAO =  UsuarioDAO.getInstancia();
     }
 
-    public void cadastrarUsuario(String nome, String telefone, tipoUsuario tipo) {
+    public void cadastrarUsuario(String nome, String telefone, tipoUsuario tipo, String rua,
+                                 Integer numero, String cidade, String estado) {
+
+        EnderecoDAO enderecoDAO = EnderecoDAO.getInstancia();
+        Endereco endereco = enderecoDAO.buscarEndereco(rua, numero, cidade, estado);
+
+        if(endereco == null) {
+            endereco = new Endereco(rua, numero, cidade, estado);
+        } else {
+            System.out.println("Já existe um usuario com esse endereço");
+            return;
+        }
 
         if (consultarUsuarioPorNome(nome).isEmpty()) {
             //verifica novamente se tem 11 digitos
@@ -26,9 +38,9 @@ public class UsuarioController {
                             + telefone.substring(7, 11);
 
             Usuario novoUsuario = switch (tipo) {
-                case ADMINISTRADOR -> new Administrador(nome, telefoneAjustado);
-                case ALUNO -> new Aluno(nome, telefoneAjustado);
-                case PROFESSOR -> new Professor(nome, telefone);
+                case ADMINISTRADOR -> new Administrador(nome, telefoneAjustado, endereco);
+                case ALUNO -> new Aluno(nome, telefoneAjustado, endereco);
+                case PROFESSOR -> new Professor(nome, telefone, endereco);
                 default -> throw new IllegalArgumentException("Tipo de usuário inválido: " + tipo);
             };
             usuarioDAO.cadastrarUsuario(novoUsuario);
