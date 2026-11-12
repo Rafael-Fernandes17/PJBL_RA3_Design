@@ -21,7 +21,7 @@ public class DisciplinaController {
             disciplinaDAO.cadastrarDisciplina(novaDisciplina);
             return;
         }
-        System.out.println("Disciplina inexistente");
+        System.out.println("Essa disciplina já está cadastrada no sistema");
     }
 
     public void excluirDisciplina(String nomeDisciplina) {

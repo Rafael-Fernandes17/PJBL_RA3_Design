@@ -13,6 +13,9 @@ public class Disciplina {
     @Enumerated(EnumType.STRING)
     @Column(name = "CARGA_HORARIA")
     private CargaHoraria cargaHoraria;
+    @ManyToOne
+    @JoinColumn(name = "ID_CURSO", nullable = true)
+    private Curso curso;
 
     //construtor vazio exigido
     protected Disciplina(){};
@@ -32,4 +35,7 @@ public class Disciplina {
 
     public CargaHoraria getCargaHoraria() {return cargaHoraria;}
     public void setCargaHoraria(CargaHoraria cargaHoraria) {this.cargaHoraria = cargaHoraria;}
+
+    public Curso getCurso() {return curso;}
+    public void setCurso(Curso curso) {this.curso = curso;}
 }

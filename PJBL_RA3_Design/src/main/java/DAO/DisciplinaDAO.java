@@ -68,7 +68,7 @@ public class DisciplinaDAO {
         }
     }
 
-    public void atualizarDisciplina(Disciplina disciplinaParaAtualizar){
+    public boolean atualizarDisciplina(Disciplina disciplinaParaAtualizar){
 
         EntityManager em = EMF.getInstancia().gerarEntityMenager();
 
@@ -77,11 +77,15 @@ public class DisciplinaDAO {
             em.merge(disciplinaParaAtualizar);
             em.getTransaction().commit();
             em.close();
-            System.out.println("Disciplina atualizada com sucesso!");
+            return true;
         } catch(Exception e){
             em.getTransaction().rollback(); // Se der erro, desfaz
             e.printStackTrace();
-            System.out.println("Erro ao atualizar disciplina");
+            return false;
+        } finally {
+            if (em.isOpen()) {
+                em.close();
+            }
         }
     }
 }

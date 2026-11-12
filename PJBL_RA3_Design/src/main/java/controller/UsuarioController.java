@@ -6,7 +6,7 @@ import model.*;
 import java.util.List;
 
 public class UsuarioController {
-    private UsuarioDAO usuarioDAO;
+    private UsuarioDAO usuarioDAO = UsuarioDAO.getInstancia();
 
     public UsuarioController(){
         this.usuarioDAO =  UsuarioDAO.getInstancia();

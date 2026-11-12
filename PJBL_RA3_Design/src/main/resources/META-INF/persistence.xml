@@ -7,7 +7,13 @@
 
 
         <class>model.Usuario</class>
+        <class>model.Administrador</class>
+        <class>model.Aluno</class>
+        <class>model.Professor</class>
+        <class>model.Curso</class>
         <class>model.Disciplina</class>
+        <class>model.Endereco</class>
+
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
